@@ -14,6 +14,15 @@ export default {
 </script>
 
 <style>
+/* Global CSS */
+.shadow--out {
+  box-shadow: 4px 4px 2px rgba(27, 29, 31, 0.24), -4px -4px 2px #596267;
+}
+
+.shadow--in {
+  box-shadow: inset -4px -4px 4px #585f65, inset 4px 4px 4px #111314;
+}
+
 /* INIT CSS */
 *,
 ::after,
