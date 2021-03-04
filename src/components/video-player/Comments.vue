@@ -1,6 +1,6 @@
 <template>
   <div class="message-board-container">
-    <div class="message-board shadow--out"></div>
+    <div class="message-board shadow--in"></div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   height: 100%;
   grid-column: 2 / 3;
   grid-row: 1 / 3;
-  padding: 10rem 10rem 5rem 10rem;
+  padding: 10rem 10rem 0rem 10rem;
 }
 
 .message-board {

@@ -61,7 +61,6 @@ export default {
 <style lang="scss" scoped>
 .video {
   position: relative;
-  margin: 10rem 0 0 10rem;
   width: fit-content;
   height: fit-content;
 

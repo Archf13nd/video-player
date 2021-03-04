@@ -1,6 +1,7 @@
 <template>
   <div class="master-container">
     <the-screen
+      class="the-screen"
       :fullscreen="isFullscreen"
       :videoStart="videoStart"
       :newTime="newTime"
@@ -18,8 +19,8 @@
         :videoPlaying="videoStart"
       ></the-controls>
     </the-screen>
-    <the-information></the-information>
-    <the-comments></the-comments>
+    <the-information class="the-information"></the-information>
+    <the-comments class="the-comments"></the-comments>
   </div>
 </template>
 
@@ -69,11 +70,31 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .master-container {
+  min-height: 100vh;
   display: grid;
-  grid-template: 100rem calc(100vh - 100rem) / 160rem 1fr;
+  grid-template: min-content 21rem / repeat(2, minmax(640px, 33.33vw)) 1fr;
   background: rgba(52, 57, 61, 0.945);
   /* background: rgba(52, 57, 61, 0); */
   color: #ff4d15;
+}
+
+/* Defining layout */
+
+.the-screen {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  margin: 10rem 0 0 10rem;
+}
+
+.the-comments {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  padding: 10rem 10rem 0rem 10rem;
+}
+
+.the-information {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
 }
 
 .background {
@@ -86,18 +107,22 @@ export default {
   z-index: -1;
 }
 
-@media screen and (max-width: 1600px) {
-  .screen-container {
-    grid-template: min-content 30vh 30vh / 100vw;
+@media screen and (max-width: 1700px) {
+  .master-container {
+    grid-template: min-content 21rem 500px / repeat(2, 50vw);
   }
 
-  .video-container {
-    margin: 5rem;
-    padding: 5rem 5rem;
+  .the-screen {
+    margin: 5rem 10rem 0 10rem;
   }
-  .message-board-container {
-    grid-column: auto;
-    grid-row: auto;
+  .the-comments {
+    padding: 5rem 10rem;
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+  }
+  .the-information {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
   }
 }
 </style>

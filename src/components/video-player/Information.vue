@@ -1,9 +1,30 @@
 <template>
   <div class="video-information">
-    <div class="social-container">
-      <div class="social-buttons">
-        <div class="button_social shadow--out">LIKE</div>
-        <div class="button_social shadow--out">SHARE</div>
+    <div class="social">
+      <div class="social__buttons-container">
+        <div class="social__button-container" @click="like">
+          <div
+            class="social__button shadow--out"
+            :class="{ animate: likeClicked }"
+          >
+            LIKE
+          </div>
+          <div class="social__counter shadow--in">
+            <p>{{ likeCount }}</p>
+          </div>
+        </div>
+        <div class="social__button-container">
+          <div
+            class="social__button shadow--out"
+            :class="{ animate: shareClicked }"
+            @click="share"
+          >
+            SHARE
+          </div>
+          <div class="social__counter shadow--in">
+            <p>{{ shareCount }}</p>
+          </div>
+        </div>
       </div>
       <div class="social-data shadow--in">
         <h3>Date created: {{ dateCreated }}</h3>
@@ -17,7 +38,7 @@
         quos.
       </p>
     </div>
-    <div class="load-comments-bar shadow--in"></div>
+    <!-- <div class="load-comments-bar shadow--in"></div> -->
   </div>
 </template>
 
@@ -27,48 +48,91 @@ export default {
     return {
       dateCreated: "03/03/2030",
       totalViews: "666",
+      likeCount: 666,
+      shareCount: 666,
+      likeClicked: false,
+      shareClicked: false,
     };
+  },
+  methods: {
+    like() {
+      if (!this.likeClicked) {
+        setTimeout(() => {
+          this.likeCount++;
+        }, 150);
+      }
+      this.likeClicked = true;
+    },
+    share() {
+      if (!this.shareClicked) {
+        setTimeout(() => {
+          this.shareCount++;
+        }, 150);
+      }
+      this.shareClicked = true;
+    },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .video-information {
-  position: relative;
-  /* background: #000; */
-  margin: 2rem 0rem 5rem 10rem;
-  /* min-height: 17rem; */
+  // position: relative;
+  // height: 100%;
+  margin: 3rem 0 0rem 10rem;
   display: flex;
   justify-content: space-between;
 }
 
-.social-buttons {
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-}
+.social {
+  &__buttons-container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+  }
 
-.button_social {
-  width: 14rem;
-  height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  transition: transform 0.5s ease-in;
-}
+  &__button-container {
+    &:last-child {
+      margin-left: 2rem;
+    }
+  }
 
-.button_social:hover {
-  transform: translateY(-2rem);
-}
+  &__button {
+    position: relative;
+    z-index: 3;
+    width: 14rem;
+    height: 6rem;
+    border-radius: 8px;
+    background: #34393d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
 
-.button_social:last-child {
-  margin-left: 5rem;
+  &__counter {
+    position: relative;
+    z-index: 1;
+    top: 0rem;
+    width: 12rem;
+    height: 2rem;
+    margin: 0 auto;
+    border-radius: 0 0 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > p {
+      font-size: 12px;
+    }
+  }
 }
 
 .social-data {
-  /* padding: 0.5rem; */
+  padding: 1rem;
+  height: 8rem;
   margin-top: 2rem;
+  border-radius: 8px;
 }
 
 .social-data > h3 {
@@ -79,9 +143,14 @@ export default {
 
 .video-description {
   width: 70%;
-  height: 100%;
+  // height: calc(100% - 3rem);
+  border-radius: 8px;
   font-size: 2rem;
   padding: 1rem;
+
+  @media screen and (max-width: 1700px) {
+    margin-right: 10rem;
+  }
 }
 
 .load-comments-bar {
@@ -89,5 +158,9 @@ export default {
   bottom: -3rem;
   width: 100%;
   height: 1rem;
+}
+
+.animate {
+  animation: dropRise 0.3s ease-out forwards;
 }
 </style>

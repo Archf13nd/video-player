@@ -50,4 +50,16 @@ h6,
 p {
   margin: 0;
 }
+
+@keyframes dropRise {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 </style>
