@@ -1,7 +1,7 @@
 <template>
   <div class="video">
-    <div class="video__player-container shadow--out">
-      <div class="video__player-border shadow--in">
+    <div class="video__player-container neu-shadow-outset--4px">
+      <div class="video__player-border neu-shadow-inset--2px">
         <video
           ref="videoPlayer"
           src="https://pixabay.com/videos/download/video-16160_large.mp4?attachment"
@@ -74,9 +74,10 @@ export default {
     transition: transform 0.2s ease-in;
     z-index: 5;
     background: #34393d;
+    transform: translateY(-7rem);
   }
   &:hover &__player-container {
-    transform: translateY(-6rem);
+    transform: translateY(-7rem);
   }
 }
 

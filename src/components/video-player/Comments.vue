@@ -1,6 +1,6 @@
 <template>
-  <div class="message-board-container">
-    <div class="message-board shadow--in"></div>
+  <div class="message-board-container bghaha">
+    <div class="message-board neu-shadow-inset--4px"></div>
   </div>
 </template>
 
@@ -18,4 +18,8 @@
   height: 100%;
   background: rgba(52, 57, 61, 0);
 }
+
+/* .bghaha {
+  background: #000;
+} */
 </style>

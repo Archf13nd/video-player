@@ -10,8 +10,7 @@
     >
       <the-controls
         @progressBarClicked="getNewTime($event)"
-        @playBtnClicked="togglePlay()"
-        @pauseBtnClicked="togglePlay()"
+        @TogglePlayBtnClicked="togglePlay()"
         @volumeBarClicked="updateVolume($event)"
         @fullscreenBtnClicked="openFullscreen()"
         :duration="duration"
@@ -68,14 +67,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 .master-container {
   min-height: 100vh;
   display: grid;
   grid-template: min-content 21rem / repeat(2, minmax(640px, 33.33vw)) 1fr;
-  background: rgba(52, 57, 61, 0.945);
-  /* background: rgba(52, 57, 61, 0); */
-  color: #ff4d15;
+  background: $color-background;
+  color: $color-primary;
 }
 
 /* Defining layout */
@@ -101,7 +99,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/stone.jpg");
+  background: url("../assets/img/stone.jpg");
   background-size: 100vh;
   /* background-repeat: repeat-y; */
   z-index: -1;

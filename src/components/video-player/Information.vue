@@ -4,34 +4,34 @@
       <div class="social__buttons-container">
         <div class="social__button-container" @click="like">
           <div
-            class="social__button shadow--out"
+            class="social__button neu-shadow-outset--2px"
             :class="{ animate: likeClicked }"
           >
             LIKE
           </div>
-          <div class="social__counter shadow--in">
+          <div class="social__counter neu-shadow-inset--2px">
             <p>{{ likeCount }}</p>
           </div>
         </div>
         <div class="social__button-container">
           <div
-            class="social__button shadow--out"
+            class="social__button neu-shadow-outset--2px"
             :class="{ animate: shareClicked }"
             @click="share"
           >
             SHARE
           </div>
-          <div class="social__counter shadow--in">
+          <div class="social__counter neu-shadow-inset--2px">
             <p>{{ shareCount }}</p>
           </div>
         </div>
       </div>
-      <div class="social-data shadow--in">
+      <div class="social-data neu-shadow-inset--2px">
         <h3>Date created: {{ dateCreated }}</h3>
         <h3>Views: {{ totalViews }}</h3>
       </div>
     </div>
-    <div class="video-description shadow--out">
+    <div class="video-description neu-shadow-inset--4px">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio delectus
         libero ad? Amet perferendis repellendus sunt, maiores molestiae eligendi
@@ -112,6 +112,7 @@ export default {
 
   &__counter {
     position: relative;
+    background: $color-background-shadow;
     z-index: 1;
     top: 0rem;
     width: 12rem;
@@ -124,6 +125,7 @@ export default {
 
     & > p {
       font-size: 12px;
+      color: $color-highlight;
     }
   }
 }
@@ -136,7 +138,6 @@ export default {
 }
 
 .social-data > h3 {
-  color: #ff4d15;
   font-size: 1.5rem;
   padding: 0.5rem;
 }
