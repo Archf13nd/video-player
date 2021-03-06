@@ -15,10 +15,13 @@
         @volumeBarClicked="updateVolume($event)"
         @fullscreenBtnClicked="openFullscreen()"
         @playbackRate="updatePlaybackRate($event)"
+        @settingsBtnClicked="controls.settingsOpened = !controls.settingsOpened"
         :duration="duration"
         :currentTime="currentTime"
         :videoPlaying="videoStart"
-      ></the-controls>
+      >
+        <the-playback-options @playbackValue="updatePlaybackRate($event)" :settingsOpened="controls.settingsOpened"></the-playback-options>
+      </the-controls>
     </the-screen>
     <the-information class="the-information"></the-information>
     <the-comments class="the-comments"></the-comments>
@@ -26,16 +29,18 @@
 </template>
 
 <script>
-import TheComments from "./video-player/Comments.vue";
-import TheInformation from "./video-player/Information.vue";
-import TheScreen from "./video-player/Screen.vue";
-import TheControls from "./video-player/Controls.vue";
+import TheComments from "./comments/Index.vue";
+import TheInformation from "./information/Index.vue";
+import TheScreen from "./screen/Index.vue";
+import TheControls from "./controls/Index.vue";
+import ThePlaybackOptions from "./controls/PlaybackOptions.vue";
 export default {
   components: {
     TheControls,
+    ThePlaybackOptions,
     TheComments,
     TheInformation,
-    TheScreen,
+    TheScreen
   },
   data() {
     return {
@@ -46,6 +51,9 @@ export default {
       newTime: null,
       currentTime: 0,
       duration: null,
+      controls: {
+        settingsOpened: false
+      }
     };
   },
   methods: {
@@ -68,8 +76,8 @@ export default {
     },
     openFullscreen() {
       this.isFullscreen = !this.isFullscreen;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -106,7 +114,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/stone.jpg");
+  background: url("../../assets/img/stone.jpg");
   background-size: 100vh;
   /* background-repeat: repeat-y; */
   z-index: -1;

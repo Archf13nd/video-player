@@ -1,5 +1,8 @@
 <template>
   <div class="video">
+    <div class="video__hover-zone">
+      <slot></slot>
+    </div>
     <div class="video__player-container neu-shadow-outset--4px">
       <div class="video__player-border neu-shadow-inset--2px">
         <video
@@ -12,7 +15,6 @@
         ></video>
       </div>
     </div>
-    <slot></slot>
   </div>
 </template>
 
@@ -35,29 +37,27 @@ export default {
         /* IE11 */
         elem.msRequestFullscreen();
       }
-    },
+    }
   },
   computed: {
     getNewTime() {
       return this.newTime;
-    },
+    }
   },
   watch: {
     videoStart() {
-      this.videoStart
-        ? this.$refs.videoPlayer.play()
-        : this.$refs.videoPlayer.pause();
+      this.videoStart ? this.$refs.videoPlayer.play() : this.$refs.videoPlayer.pause();
     },
     fullscreen() {
       this.openFullScreen(this.$refs.videoPlayer);
     },
     playbackRate() {
       this.$refs.videoPlayer.playbackRate = this.playbackRate;
-    },
+    }
   },
   mounted() {
     // this.updateTime(this.$refs.videoPlayer);
-  },
+  }
 };
 </script>
 
@@ -74,13 +74,21 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s ease-in;
     z-index: 5;
     background: #34393d;
-    transform: translateY(-7rem);
+    transition: transform 0.2s ease-in;
+    // transform: translateY(-7rem);
   }
-  &:hover &__player-container {
-    transform: translateY(-7rem);
+  &__hover-zone {
+    position: absolute;
+    bottom: 0;
+    height: 20rem;
+    width: 100%;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.349);
+    &:hover ~ .video__player-container {
+      transform: translateY(-7rem);
+    }
   }
 }
 

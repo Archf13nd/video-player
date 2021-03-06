@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import VideoPlayer from "./components/VideoPlayer.vue";
+import VideoPlayer from "./components/video-player/Index.vue";
 
 export default {
   name: "App",
