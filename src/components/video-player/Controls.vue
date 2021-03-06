@@ -43,24 +43,39 @@
     <div class="controls__button-container controls__button-container--right">
       <div
         v-if="showSettings"
-        @click="playbackOptions"
+        @click="playbackOptions('start')"
         class="settings-box neu-shadow-inset--2px"
       >
         <p v-if="!hideTitle">Playback Speed</p>
-        <div v-if="playbackClicked" class="playback-choice">
-          <div><p>Slow</p></div>
-          <div v-if="playbackChanged"><p class="playback-normal">1</p></div>
-          <div><p>Fast</p></div>
+        <div
+          v-if="playbackClicked && !playbackActivated"
+          class="playback-choice"
+        >
+          <div @click="playbackOptions('fast')"><p>Fast</p></div>
+          <div v-if="playbackChanged">1</div>
+          <div @click="playbackOptions('slow')"><p>Slow</p></div>
         </div>
         <div class="playback-choice" v-if="slowerClicked">
-          <div class="playback-speed"><p>.25</p></div>
-          <div class="playback-speed"><p>.50</p></div>
-          <div class="playback-speed"><p>.75</p></div>
+          <div @click="playbackOptions(25)" class="playback-speed">
+            <p>.25</p>
+          </div>
+          <div @click="playbackOptions(50)" class="playback-speed">
+            <p>.50</p>
+          </div>
+          <div @click="playbackOptions(75)" class="playback-speed">
+            <p>.75</p>
+          </div>
         </div>
         <div class="playback-choice" v-if="fasterClicked">
-          <div class="playback-speed"><p>1.5</p></div>
-          <div class="playback-speed"><p>1.75</p></div>
-          <div class="playback-speed"><p>2</p></div>
+          <div @click="playbackOptions(1.5)" class="playback-speed">
+            <p>1.5</p>
+          </div>
+          <div @click="playbackOptions(1.75)" class="playback-speed">
+            <p>1.75</p>
+          </div>
+          <div @click="playbackOptions(2)" class="playback-speed">
+            <p>2</p>
+          </div>
         </div>
       </div>
       <div class="button" @click="showSettings = !showSettings">
@@ -82,17 +97,45 @@ export default {
       volumeBarWidth: "100%",
       lastVolume: null,
       showSettings: false,
-      hideTitle: true,
+      hideTitle: false,
       settingsClicked: false,
-      playbackClicked: true,
+      playbackActivated: false,
+      playbackClicked: false,
       fasterClicked: false,
       slowerClicked: false,
       normalClicked: false,
-      playbackChanged: true,
+      playbackChanged: false,
     };
   },
   methods: {
-    playbackOptions() {},
+    playbackOptions(location) {
+      switch (location) {
+        case "start":
+          this.hideTitle = true;
+          this.playbackClicked = true;
+          break;
+        case "fast":
+          this.fasterClicked = true;
+          this.playbackActivated = true;
+          break;
+        case "slow":
+          this.slowerClicked = true;
+          this.playbackActivated = true;
+          break;
+        case 25:
+          break;
+        case 0:
+          break;
+        case 75:
+          break;
+        case 1.25:
+          break;
+        case 1.5:
+          break;
+        case 2:
+          break;
+      }
+    },
     progressBarClicked(e) {
       const barWidth = e.target.closest(".controls__progress-slider")
         .clientWidth;
@@ -255,9 +298,10 @@ export default {
   display: grid;
   grid-auto-flow: column;
   justify-items: center;
+  justify-content: stretch;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(1fr, 33%));
-
+  // grid-template-columns: repeat(auto-fit, minmax(1fr, 50%));
+  grid-template-columns: repeat(auto-fit, minmax(20px, 50%));
   & > div {
     width: 100%;
     height: 100%;
@@ -265,11 +309,18 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     @include neu-shadow-inset--2px;
 
+    &:first-child {
+      letter-spacing: 1.2px;
+    }
+
     & > p {
-      max-width: 50%;
-      width: 100%;
+      padding: 0;
+      width: 40px;
+      margin: 0 auto;
+      // min-width: 45px;
       text-align: center;
     }
   }
