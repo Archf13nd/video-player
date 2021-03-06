@@ -6,6 +6,7 @@
       :videoStart="videoStart"
       :newTime="newTime"
       :volume="volume"
+      :playbackRate="playbackRate"
       @timeUpdate="updateTime"
     >
       <the-controls
@@ -13,6 +14,7 @@
         @TogglePlayBtnClicked="togglePlay()"
         @volumeBarClicked="updateVolume($event)"
         @fullscreenBtnClicked="openFullscreen()"
+        @playbackRate="updatePlaybackRate($event)"
         :duration="duration"
         :currentTime="currentTime"
         :videoPlaying="videoStart"
@@ -40,6 +42,7 @@ export default {
       isFullscreen: false,
       videoStart: false,
       volume: 1,
+      playbackRate: 1,
       newTime: null,
       currentTime: 0,
       duration: null,
@@ -58,6 +61,10 @@ export default {
     },
     updateVolume(newVolume) {
       this.volume = newVolume;
+    },
+    updatePlaybackRate(playbackRate) {
+      // console.log(playbackRate);
+      this.playbackRate = playbackRate;
     },
     openFullscreen() {
       this.isFullscreen = !this.isFullscreen;

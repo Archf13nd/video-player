@@ -42,27 +42,29 @@
     </div>
     <div class="controls__button-container controls__button-container--right">
       <div
-        v-if="showSettings"
+        v-if="showSettings && !playbackClicked"
         @click="playbackOptions('start')"
         class="settings-box neu-shadow-inset--2px"
       >
-        <p v-if="!hideTitle">Playback Speed</p>
+        <p>Playback Speed</p>
+      </div>
+      <div v-if="playbackClicked" class="settings-box neu-shadow-inset--2px">
         <div
           v-if="playbackClicked && !playbackActivated"
           class="playback-choice"
         >
           <div @click="playbackOptions('fast')"><p>Fast</p></div>
-          <div v-if="playbackChanged">1</div>
+          <div v-if="playbackChanged" @click="playbackOptions(1)">1</div>
           <div @click="playbackOptions('slow')"><p>Slow</p></div>
         </div>
         <div class="playback-choice" v-if="slowerClicked">
-          <div @click="playbackOptions(25)" class="playback-speed">
+          <div @click="playbackOptions(0.25)" class="playback-speed">
             <p>.25</p>
           </div>
-          <div @click="playbackOptions(50)" class="playback-speed">
+          <div @click="playbackOptions(0.5)" class="playback-speed">
             <p>.50</p>
           </div>
-          <div @click="playbackOptions(75)" class="playback-speed">
+          <div @click="playbackOptions(0.75)" class="playback-speed">
             <p>.75</p>
           </div>
         </div>
@@ -105,11 +107,27 @@ export default {
       slowerClicked: false,
       normalClicked: false,
       playbackChanged: false,
+      playbackSpeed: 1,
     };
   },
   methods: {
-    playbackOptions(location) {
-      switch (location) {
+    resetPlaybackOptions() {
+      this.hideTitle = false;
+      this.settingsClicked = false;
+      this.playbackActivated = false;
+      this.playbackClicked = false;
+      this.fasterClicked = false;
+      this.slowerClicked = false;
+      this.normalClicked = false;
+    },
+    playbackOptions(value) {
+      if (typeof value === "number") {
+        this.$emit("playbackRate", value);
+        value !== 1
+          ? (this.playbackChanged = true)
+          : this.playbackChanged === false;
+      }
+      switch (value) {
         case "start":
           this.hideTitle = true;
           this.playbackClicked = true;
@@ -122,17 +140,33 @@ export default {
           this.slowerClicked = true;
           this.playbackActivated = true;
           break;
-        case 25:
+        case 0.25:
+          this.playbackSpeed = 0.25;
+          this.resetPlaybackOptions();
           break;
-        case 0:
+        case 0.5:
+          this.playbackSpeed = 0.5;
+          this.resetPlaybackOptions();
           break;
-        case 75:
+        case 0.75:
+          this.playbackSpeed = 0.75;
+          this.resetPlaybackOptions();
           break;
-        case 1.25:
+        case 1:
+          this.playbackSpeed = 1;
+          this.resetPlaybackOptions();
           break;
         case 1.5:
+          this.playbackSpeed = 1.25;
+          this.resetPlaybackOptions();
+          break;
+        case 1.75:
+          this.playbackSpeed = 1.5;
+          this.resetPlaybackOptions();
           break;
         case 2:
+          this.playbackSpeed = 2;
+          this.resetPlaybackOptions();
           break;
       }
     },
@@ -286,6 +320,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   & > p {
     font-size: 1.6rem;

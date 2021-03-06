@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ["fullscreen", "videoStart", "newTime", "volume"],
+  props: ["fullscreen", "videoStart", "newTime", "volume", "playbackRate"],
   methods: {
     updateTime(e) {
       const duration = e.target.duration;
@@ -50,6 +50,9 @@ export default {
     },
     fullscreen() {
       this.openFullScreen(this.$refs.videoPlayer);
+    },
+    playbackRate() {
+      this.$refs.videoPlayer.playbackRate = this.playbackRate;
     },
   },
   mounted() {
