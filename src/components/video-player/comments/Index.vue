@@ -44,48 +44,6 @@ export default {
           name: "Adam",
           img: "",
           content: "Is that relevant to the video?"
-        },
-        {
-          name: "Death3",
-          img: "",
-          content: "Hahaha I wasn't expecting that! What a plot twist"
-        },
-        {
-          name: "The very evil one3",
-          img: "",
-          content: "That was one crazy turn of events"
-        },
-        {
-          name: "The supreme destroyer3",
-          img: "",
-          content:
-            "There was once a young man with no dream in his head or will in his heart. Day by day he worked and little did he play. Until, one day, his life was changed forever."
-        },
-        {
-          name: "Adam3",
-          img: "",
-          content: "Is that relevant to the video?"
-        },
-        {
-          name: "Death1",
-          img: "",
-          content: "Hahaha I wasn't expecting that! What a plot twist"
-        },
-        {
-          name: "The very evil one1",
-          img: "",
-          content: "That was one crazy turn of events"
-        },
-        {
-          name: "The supreme destroyer1",
-          img: "",
-          content:
-            "There was once a young man with no dream in his head or will in his heart. Day by day he worked and little did he play. Until, one day, his life was changed forever."
-        },
-        {
-          name: "Adam1",
-          img: "",
-          content: "Is that relevant to the video?"
         }
       ],
       messageContent: ""
@@ -118,19 +76,21 @@ export default {
   margin-bottom: 3rem;
 
   &:last-child {
-    margin-bottom: 8rem;
+    margin-bottom: 3rem;
   }
 }
 
 .message-board {
   position: relative;
   width: 100%;
+  height: 100%;
   padding: 3rem 4rem;
   background: rgba(52, 57, 61, 0);
+  border-radius: 10px;
 
   &__messages {
-    height: calc(100% - 8rem);
-    max-height: 700px;
+    height: 100%;
+    max-height: 95rem;
     overflow-y: scroll;
 
     &::-webkit-scrollbar-track {
@@ -156,6 +116,9 @@ export default {
   width: 100%;
   height: 8rem;
   background: $color-background;
+  outline: none;
+  color: $color-primary;
+  border-radius: 0 0 10px 10px;
 }
 
 .form {
