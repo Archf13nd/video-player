@@ -1,8 +1,6 @@
 <template>
   <div class="video">
-    <div class="video__hover-zone">
-      <slot></slot>
-    </div>
+    <slot></slot>
     <div class="video__player-container neu-shadow-outset--4px">
       <div class="video__player-border neu-shadow-inset--2px">
         <video
@@ -12,6 +10,7 @@
           :currentTime="getNewTime"
           @timeupdate="updateTime"
           @loadeddata="updateTime"
+          @ended="videoEnded"
         ></video>
       </div>
     </div>
@@ -37,7 +36,8 @@ export default {
         /* IE11 */
         elem.msRequestFullscreen();
       }
-    }
+    },
+    videoEnded() {}
   },
   computed: {
     getNewTime() {
@@ -79,16 +79,9 @@ export default {
     transition: transform 0.2s ease-in;
     // transform: translateY(-7rem);
   }
-  &__hover-zone {
-    position: absolute;
-    bottom: 0;
-    height: 20rem;
-    width: 100%;
-    z-index: 6;
-    background: rgba(0, 0, 0, 0.349);
-    &:hover ~ .video__player-container {
-      transform: translateY(-7rem);
-    }
+
+  &:hover &__player-container {
+    transform: translateY(-7rem);
   }
 }
 
