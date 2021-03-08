@@ -8,8 +8,8 @@ import VideoPlayer from "./components/video-player/Index.vue";
 export default {
   name: "App",
   components: {
-    VideoPlayer,
-  },
+    VideoPlayer
+  }
 };
 </script>
 
@@ -30,6 +30,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Francois One", sans-serif;
 }
 
 h1,
@@ -40,6 +41,11 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+h1,
+h2 {
+  @include neu-shadow-inset-text--rg;
 }
 
 @keyframes dropRise {

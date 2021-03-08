@@ -1,6 +1,6 @@
 <template>
   <div class="comment">
-    <h2 class="comment__title">{{ name }}</h2>
+    <h3 class="comment__title">{{ name }}</h3>
     <div class="comment__divider"></div>
     <div class="comment__contents">
       <div class="comment__contents__img neu-shadow-inset--2px"></div>
@@ -24,7 +24,7 @@ export default {
   flex-direction: column;
 
   &__title {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   &__divider {

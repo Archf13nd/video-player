@@ -3,23 +3,16 @@
     <div class="social">
       <div class="social__buttons-container">
         <div class="social__button-container" @click="like">
-          <div
-            class="social__button neu-shadow-outset--2px"
-            :class="{ animate: likeClicked }"
-          >
-            LIKE
+          <div class="social__button neu-shadow-outset--2px" :class="{ animate: likeClicked }">
+            <h2>LIKE</h2>
           </div>
           <div class="social__counter neu-shadow-inset--2px">
             <p>{{ likeCount }}</p>
           </div>
         </div>
         <div class="social__button-container">
-          <div
-            class="social__button neu-shadow-outset--2px"
-            :class="{ animate: shareClicked }"
-            @click="share"
-          >
-            SHARE
+          <div class="social__button neu-shadow-outset--2px" :class="{ animate: shareClicked }" @click="share">
+            <h2>SHARE</h2>
           </div>
           <div class="social__counter neu-shadow-inset--2px">
             <p>{{ shareCount }}</p>
@@ -33,9 +26,7 @@
     </div>
     <div class="video-description neu-shadow-inset--4px">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio delectus
-        libero ad? Amet perferendis repellendus sunt, maiores molestiae eligendi
-        quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio delectus libero ad? Amet perferendis repellendus sunt, maiores molestiae eligendi quos.
       </p>
     </div>
     <!-- <div class="load-comments-bar shadow--in"></div> -->
@@ -51,7 +42,7 @@ export default {
       likeCount: 666,
       shareCount: 666,
       likeClicked: false,
-      shareClicked: false,
+      shareClicked: false
     };
   },
   methods: {
@@ -70,12 +61,17 @@ export default {
         }, 150);
       }
       this.shareClicked = true;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+
 .video-information {
   // position: relative;
   // height: 100%;

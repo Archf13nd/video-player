@@ -8,6 +8,8 @@
       :volume="volume"
       :playbackRate="playbackRate"
       @timeUpdate="updateTime"
+      @videoEnded="videoEnded"
+      @restartVideo="restartVideo"
     >
       <the-controls
         @progressBarClicked="getNewTime($event)"
@@ -76,6 +78,13 @@ export default {
     },
     openFullscreen() {
       this.isFullscreen = !this.isFullscreen;
+    },
+    restartVideo() {
+      this.newTime = 0;
+      this.videoStart = true;
+    },
+    videoEnded() {
+      this.videoStart = false;
     }
   }
 };
@@ -86,9 +95,16 @@ export default {
 .master-container {
   min-height: 100vh;
   display: grid;
-  grid-template: min-content 21rem / repeat(2, minmax(640px, 33.33vw)) 1fr;
+  grid-template: minmax(97rem, min-content) calc(100vh - 100rem) / repeat(2, minmax(640px, 33.33vw)) 1fr;
   background: $color-background;
   color: $color-primary;
+}
+
+.grid-wrapper {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
 }
 
 /* Defining layout */
@@ -136,6 +152,11 @@ export default {
   .the-information {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
+  }
+}
+@media screen and (max-width: 650px) {
+  .the-screen {
+    margin: 0;
   }
 }
 </style>
