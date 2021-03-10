@@ -1,29 +1,37 @@
 <template>
   <div class="video-information">
-    <div class="social">
-      <div class="social__buttons-container">
-        <div class="social__button-container" @click="like">
-          <div class="social__button neu-shadow-outset--2px" :class="{ animate: likeClicked }">
-            <h2>LIKE</h2>
-          </div>
-          <div class="social__counter neu-shadow-inset--2px">
-            <p>{{ likeCount }}</p>
-          </div>
-        </div>
-        <div class="social__button-container">
-          <div class="social__button neu-shadow-outset--2px" :class="{ animate: shareClicked }" @click="share">
-            <h2>SHARE</h2>
-          </div>
-          <div class="social__counter neu-shadow-inset--2px">
-            <p>{{ shareCount }}</p>
-          </div>
+    <div class="video-information__above-the-fold">
+      <div class="video-information__stats">
+        <div class="title"><h1>The Ocean</h1></div>
+        <div class="bar"></div>
+        <div class="video-information__stats--data-views">
+          <h3>03/03/2021</h3>
+          <h3>666,666 views</h3>
         </div>
       </div>
-      <div class="social-data neu-shadow-inset--2px">
-        <h3>Date created: {{ dateCreated }}</h3>
-        <h3>Views: {{ totalViews }}</h3>
+
+      <div class="social">
+        <div class="social__buttons-container">
+          <div class="social__button-container" @click="like">
+            <div class="social__button neu-shadow-outset--2px" :class="{ animate: likeClicked }">
+              <div class="social__button--like"></div>
+            </div>
+            <div class="social__counter neu-shadow-inset--2px">
+              <p>{{ likeCount }}</p>
+            </div>
+          </div>
+          <div class="social__button-container">
+            <div class="social__button neu-shadow-outset--2px" :class="{ animate: shareClicked }" @click="dislike">
+              <div class="social__button--dislike"></div>
+            </div>
+            <div class="social__counter neu-shadow-inset--2px">
+              <p>{{ shareCount }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="video-uploader"></div>
     <div class="video-description neu-shadow-inset--4px">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio delectus libero ad? Amet perferendis repellendus sunt, maiores molestiae eligendi quos.
@@ -54,7 +62,7 @@ export default {
       }
       this.likeClicked = true;
     },
-    share() {
+    dislike() {
       if (!this.shareClicked) {
         setTimeout(() => {
           this.shareCount++;
@@ -76,8 +84,12 @@ h2 {
   // position: relative;
   // height: 100%;
   margin: 3rem 0 0rem 10rem;
-  display: flex;
-  justify-content: space-between;
+
+  &__above-the-fold {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .social {
@@ -96,7 +108,7 @@ h2 {
   &__button {
     position: relative;
     z-index: 3;
-    width: 14rem;
+    width: 6rem;
     height: 6rem;
     border-radius: 8px;
     background: #34393d;
@@ -104,6 +116,17 @@ h2 {
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+
+    &--dislike {
+      width: 100%;
+      height: 100%;
+      background: no-repeat center / 60% url("../../../assets/icons/dislike.svg");
+    }
+    &--like {
+      width: 100%;
+      height: 100%;
+      background: no-repeat center / 60% url("./../../../assets/icons/like.svg");
+    }
   }
 
   &__counter {
@@ -111,7 +134,7 @@ h2 {
     background: $color-background-shadow;
     z-index: 1;
     top: 0rem;
-    width: 12rem;
+    width: 4rem;
     height: 2rem;
     margin: 0 auto;
     border-radius: 0 0 1rem 1rem;
@@ -150,11 +173,10 @@ h2 {
   }
 }
 
-.load-comments-bar {
-  position: absolute;
-  bottom: -3rem;
+.bar {
   width: 100%;
-  height: 1rem;
+  height: 0.5rem;
+  @include neu-shadow-inset--2px;
 }
 
 .animate {

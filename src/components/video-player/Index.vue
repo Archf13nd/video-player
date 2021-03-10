@@ -1,5 +1,6 @@
 <template>
   <div class="master-container">
+    <the-header></the-header>
     <the-screen
       class="the-screen"
       :fullscreen="isFullscreen"
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+import TheHeader from "./header/Index.vue";
 import TheComments from "./comments/Index.vue";
 import TheInformation from "./information/Index.vue";
 import TheScreen from "./screen/Index.vue";
@@ -38,6 +40,7 @@ import TheControls from "./controls/Index.vue";
 import ThePlaybackOptions from "./controls/PlaybackOptions.vue";
 export default {
   components: {
+    TheHeader,
     TheControls,
     ThePlaybackOptions,
     TheComments,
@@ -98,6 +101,13 @@ export default {
   grid-template: minmax(97rem, min-content) calc(100vh - 100rem) / repeat(2, minmax(640px, 33.33vw)) 1fr;
   background: $color-background;
   color: $color-primary;
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
 }
 
 .grid-wrapper {

@@ -30,7 +30,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Francois One", sans-serif;
+  font-family: $font-primary;
 }
 
 h1,
@@ -45,7 +45,20 @@ p {
 
 h1,
 h2 {
-  @include neu-shadow-inset-text--rg;
+  @include neu-shadow-inset-text--title;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: none;
+  color: $color-primary;
+  letter-spacing: 2px;
+  padding: 2rem;
+}
+input::placeholder {
+  color: $color-primary;
+  letter-spacing: 2px;
 }
 
 @keyframes dropRise {

@@ -1,5 +1,6 @@
 // FONTS
-@import url("https://fonts.googleapis.com/css2?family=Francois+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+$font-primary: "Open Sans", sans-serif;
 
 // Colors
 $color-background: #3b4044;
@@ -14,13 +15,13 @@ $margin-video-container: 10rem;
 
 // Box Shadows
 .neu-shadow-inset--2px {
-  box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .neu-shadow-inset--4px {
   box-shadow: inset -4px -4px 2px rgba(255, 255, 255, 0.5), inset 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
 .neu-shadow-outset--2px {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.5);
 }
 .neu-shadow-outset--4px {
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5), -4px -4px 2px rgba(255, 255, 255, 0.5);
@@ -33,17 +34,26 @@ $margin-video-container: 10rem;
 }
 // Mixins for Box shadows
 @mixin neu-shadow-outset--2px {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.5);
 }
-@mixin neu-shadow-inset--4px {
-  box-shadow: inset -4px -4px 2px rgba(255, 255, 255, 0.5), inset 4px 4px 2px rgba(0, 0, 0, 0.5);
+@mixin neu-shadow-outset--4px {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.5);
 }
 @mixin neu-shadow-inset--2px {
-  box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+@mixin neu-shadow-inset--4px {
+  box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.5), inset 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-@mixin neu-shadow-inset-text--rg {
+@mixin neu-shadow-inset-text--title {
   text-shadow: -1.5px -1.5px 0px rgba(0, 0, 0, 1), 0.5px 0.5px 0px rgba(255, 255, 255, 0.521);
+}
+@mixin neu-shadow-inset-text--sm {
+  text-shadow: -1.5px -1.5px 0px rgba(0, 0, 0, 1), 0.5px 0.5px 0px rgba(255, 255, 255, 0.521);
+}
+@mixin neu-shadow-inset--bar {
+  box-shadow: -0.5px -0.5px 0px rgba(0, 0, 0, 1), 0.5px 0.5px 0px rgba(255, 255, 255, 0.521);
 }
 
 // Extends
