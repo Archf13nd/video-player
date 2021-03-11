@@ -114,10 +114,11 @@ h2 {
 }
 
 .bar {
-  width: 100%;
+  width: 300%;
   margin-top: 0.5rem;
   height: 0.5rem;
-  @include neu-shadow-inset--2px;
+  border-radius: 2px;
+  @include neu-shadow-inset--bar;
 }
 .social {
   &__buttons-container {

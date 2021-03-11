@@ -71,6 +71,12 @@ form {
   border-radius: 10px 0 0 10px;
   @include neu-shadow-inset--2px;
 
+  &::placeholder {
+    font-size: 18px;
+    opacity: 0.5;
+    // line-height: 5rem;
+  }
+
   &:focus {
     @include neu-shadow-inset--4px;
   }

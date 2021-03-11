@@ -96,7 +96,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .master-container {
-  width: calc(100% + 20px);
   min-height: 150vh;
   display: grid;
   column-gap: 3rem;

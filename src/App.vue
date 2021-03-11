@@ -46,7 +46,7 @@ p {
 
 h1,
 h2 {
-  @include neu-shadow-inset-text--title;
+  // @include neu-shadow-inset-text--title;
 }
 
 input {
@@ -59,7 +59,7 @@ input {
 }
 input::placeholder {
   color: $color-primary;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
 }
 
 @keyframes dropRise {
