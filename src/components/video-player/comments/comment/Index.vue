@@ -49,6 +49,7 @@ export default {
 
     &__txt {
       margin-left: 6px;
+      margin-right: 2rem;
       font-size: 13px;
       flex: 1 1 300px;
       height: 100%;

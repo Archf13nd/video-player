@@ -96,9 +96,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .master-container {
-  min-height: 100vh;
+  width: calc(100% + 20px);
+  min-height: 150vh;
   display: grid;
-  grid-template: minmax(97rem, min-content) calc(100vh - 100rem) / repeat(2, minmax(640px, 33.33vw)) 1fr;
+  column-gap: 3rem;
+  grid: 10rem min-content min-content / 7rem repeat(8, 1fr) 7rem;
   background: $color-background;
   color: $color-primary;
 }
@@ -120,20 +122,20 @@ header {
 /* Defining layout */
 
 .the-screen {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  margin: 10rem 0 0 10rem;
+  grid-column: 2 / 8;
+  grid-row: 2 / 3;
+  // margin: 10rem 0 0 0;
 }
 
 .the-comments {
-  grid-column: 3 / 4;
-  grid-row: 1 / 3;
-  padding: 10rem 10rem 0rem 10rem;
+  grid-column: 8 / 10;
+  grid-row: 2 / 3;
+  // padding: 10rem 10rem 0rem 10rem;
 }
 
 .the-information {
-  grid-column: 1 / 3;
-  grid-row: 2 / 3;
+  grid-column: 2 / 8;
+  grid-row: 3 / 4;
 }
 
 .background {
@@ -146,7 +148,7 @@ header {
   z-index: -1;
 }
 
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 1300px) {
   .master-container {
     grid-template: min-content 21rem 500px / repeat(2, 50vw);
   }

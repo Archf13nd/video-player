@@ -31,6 +31,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: $font-primary;
+  scrollbar-width: none;
 }
 
 h1,

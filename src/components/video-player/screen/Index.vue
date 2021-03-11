@@ -79,8 +79,8 @@ export default {
 <style lang="scss" scoped>
 .video {
   position: relative;
-  width: calc(100% - 10rem);
-  height: calc(100% - 10rem);
+  width: 100%;
+  height: 100%;
 
   &__player-container {
     position: relative;

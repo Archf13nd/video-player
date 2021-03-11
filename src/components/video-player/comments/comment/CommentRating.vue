@@ -1,7 +1,7 @@
 <template>
   <div class="comment-rating">
     <div class="comment-rating__icon comment-rating__icon--thumbs-up" @click="rate('like')"></div>
-    <div class="comment-rating__counter neu-shadow-inset-text--sm">{{ counter }}</div>
+    <div class="comment-rating__counter">{{ counter }}</div>
     <div class="comment-rating__icon comment-rating__icon--thumbs-down" @click="rate('dislike')"></div>
   </div>
 </template>
@@ -33,8 +33,9 @@ export default {
   &__counter {
     width: 3rem;
     text-align: center;
-    font-size: 9px;
-    font-weight: bold;
+    font-size: 10px;
+    color: $color-highlight;
+    font-weight: semi-bold;
     flex-shrink: 0;
   }
 

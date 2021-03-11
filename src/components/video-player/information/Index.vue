@@ -2,12 +2,9 @@
   <div class="video-information">
     <div class="video-information__above-the-fold">
       <div class="video-information__stats">
-        <div class="title"><h1>The Ocean</h1></div>
+        <h1 class="video-information__title">The Ocean is very rough</h1>
         <div class="bar"></div>
-        <div class="video-information__stats--data-views">
-          <h3>03/03/2021</h3>
-          <h3>666,666 views</h3>
-        </div>
+        <h3 class="video-information__stats--data-views">03/03/2021 • 666,666 views</h3>
       </div>
 
       <div class="social">
@@ -31,10 +28,20 @@
         </div>
       </div>
     </div>
-    <div class="video-uploader"></div>
+    <div class="video-uploader">
+      <div class="video-uploader__img"></div>
+      <h3>Time Defenders</h3>
+    </div>
     <div class="video-description neu-shadow-inset--4px">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio delectus libero ad? Amet perferendis repellendus sunt, maiores molestiae eligendi quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia id error cupiditate nesciunt eaque officia fugiat rerum minus pariatur, est voluptates
+        iusto. Quos rerum, perspiciatis explicabo tenetur sit deleniti illum ullam quae doloremque soluta ut alias magni natus commodi nihil? Lorem ipsum dolor
+        <br />
+        <br />
+        sit amet consectetur adipisicing elit. Optio fuga voluptate vitae veniam commodi delectus debitis explicabo blanditiis laudantium quod, voluptas,
+        tempore perferendis libero deleniti asperiores placeat hic et. Pariatur asperiores laudantium eius unde eveniet accusantium quod quibusdam facere
+        veniam.
       </p>
     </div>
     <!-- <div class="load-comments-bar shadow--in"></div> -->
@@ -83,15 +90,35 @@ h2 {
 .video-information {
   // position: relative;
   // height: 100%;
-  margin: 3rem 0 0rem 10rem;
+  margin: 3rem 0 0rem 0rem;
 
   &__above-the-fold {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__stats {
+    &--data-views {
+      margin-top: 0.5rem;
+      font-size: 12px;
+      font-weight: normal;
+    }
+    // margin-top: 2rem;
+  }
 }
 
+.bar {
+  width: 100%;
+  margin-top: 0.5rem;
+  height: 0.5rem;
+  @include neu-shadow-inset--2px;
+}
 .social {
   &__buttons-container {
     width: fit-content;
@@ -161,22 +188,34 @@ h2 {
   padding: 0.5rem;
 }
 
+.video-uploader {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  &__img {
+    width: 4rem;
+    height: 4rem;
+    background: url("../../../assets/img/uploader.png");
+    margin-right: 1rem;
+  }
+
+  & > h3 {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
 .video-description {
   width: 70%;
   // height: calc(100% - 3rem);
   border-radius: 8px;
-  font-size: 2rem;
+  font-size: 12px;
+  margin-top: 1.5rem;
   padding: 1rem;
 
   @media screen and (max-width: 1700px) {
     margin-right: 10rem;
   }
-}
-
-.bar {
-  width: 100%;
-  height: 0.5rem;
-  @include neu-shadow-inset--2px;
 }
 
 .animate {

@@ -7,7 +7,7 @@
         ></the-comment>
       </div>
       <form @submit.prevent="submitMessage" class="form neu-shadow-outse--4px">
-        <input class="message-bar" v-model="messageContent" type="text" />
+        <input class="message-bar" v-model="messageContent" type="text" placeholder="Write a comment!" />
       </form>
     </div>
   </div>
@@ -66,15 +66,16 @@ export default {
 .message-board-container {
   width: 100%;
   height: 100%;
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-  padding: 10rem 10rem 0rem 10rem;
+  padding: 0 0 0 0;
 }
 
 .comment {
   margin: 0 auto;
   margin-bottom: 3rem;
 
+  &:first-child {
+    margin-top: 3rem;
+  }
   &:last-child {
     margin-bottom: 3rem;
   }
@@ -84,14 +85,19 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 3rem 4rem;
+  padding: 0rem 4rem 4rem 4rem;
   background: rgba(52, 57, 61, 0);
   border-radius: 10px;
+  // border: 1px solid black;
 
   &__messages {
-    height: 100%;
-    max-height: 95rem;
-    overflow-y: scroll;
+    position: absolute;
+    width: calc(100% - 8rem);
+    height: calc(100% - 8rem);
+    top: 1rem;
+    left: 4rem;
+    // height: 100%;
+    overflow-y: auto;
 
     &::-webkit-scrollbar-track {
       @include neu-shadow-inset--2px;
@@ -114,11 +120,16 @@ export default {
 
 .message-bar {
   width: 100%;
-  height: 8rem;
+  height: 100%;
   background: $color-background;
   outline: none;
   color: $color-primary;
   border-radius: 0 0 10px 10px;
+  @include neu-shadow-inset--2px;
+
+  &:focus {
+    @include neu-shadow-inset--4px;
+  }
 }
 
 .form {
@@ -126,7 +137,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 8rem;
+  height: 5rem;
 }
 
 /* .bghaha {
